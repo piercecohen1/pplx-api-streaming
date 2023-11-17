@@ -37,7 +37,7 @@ def stream_request(messages):
                     data = json.loads(decoded_line)
                     current_content = data['choices'][0]['message']['content']
                     if current_content != last_printed:  # Update only if there is new content
-                        new_content = current_content[len(last_printed):].strip()
+                        new_content = current_content[len(last_printed):]
                         if new_content:  # Only update if new content is not empty
                             sys.stdout.write(new_content)
                             sys.stdout.flush()  # Flush the buffer to immediately print the new content
